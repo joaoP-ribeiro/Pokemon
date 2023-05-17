@@ -3,16 +3,41 @@ import random
 
 
 class Monstro(Tipo):
-    def __init__(self, tipo, nome, vida, ataque, velocidade, ataque1, ataque2, bot=False) -> None:
+    def __init__(self, tipo, nome, vida, ataque, velocidade, rosto, ataque1, ataque2, bot=False) -> None:
         super().__init__(tipo)
-        self.nome = nome
-        self.vida = vida
-        self.vida_maxima = vida
+        self._nome = nome
+        self._vida = vida
+        self._vida_maxima = vida
         self.ataque = ataque
         self.velocidade = velocidade
-        self.ataque1 = ataque1
-        self.ataque2 = ataque2
+        self._rosto = rosto
+        self._ataque1 = ataque1
+        self._ataque2 = ataque2
         self.bot = bot
+
+    @property
+    def nome(self):
+        return self._nome
+    
+    @property
+    def vida(self):
+        return self._vida
+    
+    @property
+    def vida_maxima(self):
+        return self._vida_maxima
+    
+    @property
+    def rosto(self):
+        return self._rosto
+    
+    @property
+    def ataque1(self):
+        return self._ataque1
+    
+    @property
+    def ataque2(self):
+        return self._ataque2
 
     def perca_vida(self, dano, tipo):
         """
@@ -73,19 +98,6 @@ class Monstro(Tipo):
             dano = 0
         return dano
 
-    def status_atual(self):
-        print(f"{self.nome}: ")
-        print(f"Vida: {self.vida}")
-
-    def status(self):
-        """
-        printa os status do pokemon
-        :return: None
-        """
-        print(f"Nome: {self.nome}")
-        print(f"Vida: {self.vida}")
-        print(f"Ataque: {self.ataque}")
-        print(f"Velocidade: {self.velocidade}")
 
 
 
