@@ -5,6 +5,7 @@ from tkinter import ttk
 import tkinter as tk
 
 from Monstro import Monstro
+from POKEMON.Obliterar import Obliterar
 
 # batalha = Tk()
 
@@ -170,8 +171,13 @@ class Tela_duelo():
             self.pokemon_ini.vida -= dano
             morte = self.morte_ini(self.pokemon_ini.vida)
             if morte:
-                self.status_lb.config(text=f"{self.user_pokemon.nome}...VITÓRIA")
-                self.vidaa_ini_lb.config(text=0)
+                if self.user_pokemon.nome == "Ezodia":
+                    self.status_lb.config(text=f"{self.user_pokemon.nome}...VITÓRIA")
+                    self.vidaa_ini_lb.config(text=0)
+                    Obliterar()
+                else:
+                    self.status_lb.config(text=f"{self.user_pokemon.nome}...VITÓRIA")
+                    self.vidaa_ini_lb.config(text=0)
             else:
                 self.vidaa_ini_lb.config(text=f"{round(self.pokemon_ini.vida, 2)}")
                 self.status2_lb.config(text="Oponente está escolhendo o Ataque!")
