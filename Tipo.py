@@ -13,18 +13,26 @@ class Tipo():
         if self.tipo == "agua":
             if tipo == "fogo":
                 dano = dano * 0.5
-            elif tipo == "planta":
+            if tipo == "planta":
                 dano = dano * 2
-        elif self.tipo == "planta":
+            else:
+                dano = dano
+
+        if self.tipo == "planta":
             if tipo == "agua":
                 dano = dano * 0.5
-            elif tipo == "fogo":
+            if tipo == "fogo":
                 dano = dano * 2
-        else:
+            else:
+                dano = dano
+
+        if self.tipo == "fogo":
             if tipo == "planta":
                 dano = dano * 0.5
-            elif tipo == "agua":
+            if tipo == "agua":
                 dano = dano * 2
+            else:
+                dano = dano
         return dano
 
 

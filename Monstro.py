@@ -47,9 +47,8 @@ class Monstro(Tipo):
         :return: double
         """
         dano = self.fraqueza(dano, tipo)
-        print(f"Dano tomado é: {dano}")
-        self.vida -= dano
-        return self.vida
+        return dano
+
 
     def ataque_normal(self, vida_oponente):
         """
@@ -58,10 +57,9 @@ class Monstro(Tipo):
         :param vida_oponente: double
         :return: double, str
         """
-        print(f"{self.nome} usou {self.ataque1}")
         dano_i = (self.ataque * 0.1) * (vida_oponente / 10)
-        dano_f = self.logica_dano(dano_i)
-        return dano_f, "normal"
+        dano_f, fraze = self.logica_dano(dano_i)
+        return dano_f, "normal", fraze
 
     def ataque_tipo(self, vida_maxima, vida_atual):
         """
@@ -72,10 +70,9 @@ class Monstro(Tipo):
         :param vida_atual: double
         :return: double, str
         """
-        print(f"{self.nome} usou {self.ataque2}")
         dano_i = (self.ataque * 0.2) + (self.velocidade * 0.1) + ((vida_maxima - vida_atual) * 0.4)
-        dano_f = self.logica_dano(dano_i)
-        return dano_f, self.tipo
+        dano_f, fraze = self.logica_dano(dano_i)
+        return dano_f, self.tipo, fraze
 
     def logica_dano(self, dano):
         """
@@ -88,15 +85,19 @@ class Monstro(Tipo):
         probabilidade = [0.7, 0.2, 0.1]
         sorteio = random.choices(sorteio, weights=probabilidade, k=1)[0]
         if sorteio == 1:
-            print("Ataque bem sucedido")
             dano = dano
+            return dano, "Ataque bem sucedido"
         elif sorteio == 2:
             print("Ataque crítico")
             dano = dano * 2
+            return dano, "Ataque crítico"
         else:
-            print("Errou o ataque")
             dano = 0
-        return dano
+            return dano, "Errou o ataque"
+
+    @vida.setter
+    def vida(self, value):
+        self._vida = value
 
 
 

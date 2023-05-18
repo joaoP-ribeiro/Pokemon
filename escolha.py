@@ -1,30 +1,31 @@
-import random
 from tkinter import *
 from tkinter import ttk
 import tkinter as tk
+import random
 
 from Monstro import Monstro
 from campo_batalha import Tela_duelo
-
-escolha = Tk()
-
-
-Squirtle = Monstro("agua", "Squirtle", 40, 65, 45, "C:/Users/ct67ca/Desktop/sdfjngdfg/sql-p.png", "Golpe de cauda", "Super borrifada")
-Tepig = Monstro("fogo", "Tepig", 65, 45, 40, "C:/Users/ct67ca/Desktop/sdfjngdfg/tepig-p.png","Morder", "Lança chamas")
-Treecko = Monstro("planta", "Treecko", 40, 45, 65, "C:/Users/ct67ca/Desktop/sdfjngdfg/treecko-p.png", "Arranhão", "Raio solar")
-Ezodia = Monstro("fogo", "Ezodia", 1, 99999, 99999, "C:/Users/ct67ca/Desktop/sdfjngdfg/sql-p.png", "", "Obliterar")
+#from campo_batalha import Tela_duelo
 
 
-class Tela_escolha(tk.Tk):
+
+
+Squirtle = Monstro("agua", "Squirtle", 40, 65, 45, "C:/Users/52211545874/Desktop/pokemon/POKEMON/sql-p.png", "Golpe de cauda", "Super borrifada")
+Tepig = Monstro("fogo", "Tepig", 65, 45, 40, "C:/Users/52211545874/Desktop/pokemon/POKEMON/tepig-p.png", "Morder", "Lança chamas")
+Treecko = Monstro("planta", "Treecko", 40, 45, 65, "C:/Users/52211545874/Desktop/pokemon/POKEMON/treecko-p.png", "Arranhão", "Raio solar")
+Ezodia = Monstro("fogo", "Ezodia", 1, 99999, 99999, "C:/Users/52211545874/Desktop/pokemon/POKEMON/ezodia-p.png", "", "Obliterar")
+
+
+class Tela_escolha():
     def __init__(self) -> None:
-        self.escolha = escolha
+        self.escolha = Tk()
         self.selecao = False
         self.interface()
         self.frames()
         self.labels()
         self.buttons()
         self.img()
-        escolha.mainloop()
+        self.escolha.mainloop()
     
 
     def interface(self):
@@ -54,23 +55,23 @@ class Tela_escolha(tk.Tk):
 
         
     def buttons(self):
-        self.squitle_bt = Button(self.frame_0, text="ESCOLHO VOCÊ",  bg="#5090D6", fg="#000", command=self.squirtle)
+        self.squitle_bt = Button(self.frame_0, text="ESCOLHO VOCÊ",  bg="#5090D6", fg="#000", command=self.squirtle)# command=self.squirtle
         self.squitle_bt.place(relx=0.15, rely=0.80, relwidth=0.7, relheight=0.15)
 
-        self.tepig_bt = Button(self.frame_1, text="ESCOLHO VOCÊ",  bg="#FF9D55", fg="#000", command=self.tepig)
+        self.tepig_bt = Button(self.frame_1, text="ESCOLHO VOCÊ",  bg="#FF9D55", fg="#000", command=self.tepig)# command=self.tepig
         self.tepig_bt.place(relx=0.15, rely=0.80, relwidth=0.7, relheight=0.15)
 
-        self.treecko_bt = Button(self.frame_2, text="ESCOLHO VOCÊ",  bg="#34c776", fg="#000", command=self.treecko)
+        self.treecko_bt = Button(self.frame_2, text="ESCOLHO VOCÊ",  bg="#34c776", fg="#000", command=self.treecko)# command=self.treecko
         self.treecko_bt.place(relx=0.15, rely=0.80, relwidth=0.7, relheight=0.15)
 
-        self.ezodia_bt = Button(self.frame_3, text="ESCOLHO VOCÊ",  bg="#DEDB63", fg="#000", command=self.ezodia)
+        self.ezodia_bt = Button(self.frame_3, text="ESCOLHO VOCÊ",  bg="#DEDB63", fg="#000", command=self.ezodia)# command=self.ezodia
         self.ezodia_bt.place(relx=0.15, rely=0.80, relwidth=0.7, relheight=0.15)
     
     def img(self):
-        self.squirtle_image = tk.PhotoImage(file="C:/Users/ct67ca/Desktop/sdfjngdfg/sql.png")
-        self.tepig_image = tk.PhotoImage(file="C:/Users/ct67ca/Desktop/sdfjngdfg/tepig.png")
-        self.treecko_image = tk.PhotoImage(file="C:/Users/ct67ca/Desktop/sdfjngdfg/treecko.png")
-        self.ezodia_image = tk.PhotoImage(file="C:/Users/ct67ca/Desktop/sdfjngdfg/ezodia.png")
+        self.squirtle_image = tk.PhotoImage(file=r"C:/Users/52211545874/Desktop/pokemon/POKEMON/sql.png")
+        self.tepig_image = tk.PhotoImage(file="C:/Users/52211545874/Desktop/pokemon/POKEMON/tepig.png")
+        self.treecko_image = tk.PhotoImage(file="C:/Users/52211545874/Desktop/pokemon/POKEMON/treecko.png")
+        self.ezodia_image = tk.PhotoImage(file="C:/Users/52211545874/Desktop/pokemon/POKEMON/ezodia.png")
 
         self.squirtle_label = tk.Label(self.frame_0, image=self.squirtle_image)
         self.squirtle_label.place(x=1, y=2)
@@ -100,33 +101,38 @@ class Tela_escolha(tk.Tk):
         if not self.selecao:
             pokemon_ini = self.escolha_inimigo(Squirtle)
             self.selecao = True
+            self.escolha.destroy()
             Tela_duelo(Squirtle, pokemon_ini )
         else:
-            print("pokemon ja escolhido")
+            ...
 
     def tepig(self):
         if not self.selecao:
             pokemon_ini = self.escolha_inimigo(Tepig)
             self.selecao = True
+            self.escolha.destroy()
             Tela_duelo(Tepig, pokemon_ini )
+
         else:
-            print("pokemon ja escolhido")
+            ...
     
     def treecko(self):
         if not self.selecao:
             pokemon_ini = self.escolha_inimigo(Treecko)
             self.selecao = True
+            self.escolha.destroy()
             Tela_duelo(Treecko, pokemon_ini )
         else:
-            print("pokemon ja escolhido")
+            ...
     
     def ezodia(self):
         if not self.selecao:
             pokemon_ini = self.escolha_inimigo()
             self.selecao = True
+            self.escolha.destroy()
             Tela_duelo(Ezodia, pokemon_ini )
         else:
-            print("pokemon ja escolhido")
+            ...
 
 
 tl = Tela_escolha()
